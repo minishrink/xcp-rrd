@@ -36,7 +36,7 @@ type cf_type = CF_Average | CF_Min | CF_Max | CF_Last
 (** Container so that we can handle different typed inputs *)
 type ds_value_type = VT_Float of float | VT_Int64 of int64 | VT_Unknown [@@deriving rpc]
 
-type sampling_frequency = Five_Seconds [@@deriving rpc]
+type sampling_frequency = Five_Seconds [@@deriving rpcty]
 
 (* utility *)
 
@@ -743,5 +743,5 @@ let json_to_string rrd =
   Buffer.contents b
 
 module Statefile_latency = struct
-  type t = {id: string; latency: float option} [@@deriving rpc]
+  type t = {id: string; latency: float option} [@@deriving rpcty]
 end
